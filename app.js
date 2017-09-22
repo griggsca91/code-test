@@ -9,8 +9,6 @@ import dotenv from 'dotenv';
 // routes
 import index from './routes/index';
 dotenv.config();
-console.log(process.env);
-console.log(process.env.DB_HOST);
 const app = new Koa();
 
 // error handler

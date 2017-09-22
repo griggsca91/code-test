@@ -108,7 +108,6 @@ let getActiveChats = () => {
       });
       res.on('end', function () {
         let par = JSON.parse(data);
-        console.log(par);
         let result = par.Data.length;
         resolve(result);
       });
@@ -139,17 +138,14 @@ let getOperators = () => {
       });
       res.on('end', function () {
         let par = JSON.parse(data);
-        console.log(par);
-        let result = [];
-        for (let d of par.Data) {
-          let r = {
+        let result = par.Data.map(d => {
+          return {
             loginID: d.LoginID,
             clientID: d.ClientID,
             name: d.Name,
             chatService: d.StatusType == StatusTypeAvailable,
           }
-          result.push(r);
-        }
+        });
 
         resolve(result);
       });
@@ -179,7 +175,6 @@ let setOperatorStatus = (operatorID, serviceTypeID, clientID, statusType) => {
     `StatusType=${statusType}`,
   ];
   let url = getRequestURL("setOperatorAvailability", params.join("&"))
-  console.log(url);
   return new Promise(resolve => {
     http.get(url, (res) => {
       let data = "";
@@ -188,7 +183,6 @@ let setOperatorStatus = (operatorID, serviceTypeID, clientID, statusType) => {
       });
       res.on('end', function () {
         let par = JSON.parse(data);
-        console.log(par);
         resolve(par.Status);
       });
 
