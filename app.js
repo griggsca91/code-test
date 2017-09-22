@@ -4,10 +4,13 @@ import json from 'koa-json';
 import onerror from 'koa-onerror';
 import bodyparser from 'koa-bodyparser';
 import logger from 'koa-logger';
+import dotenv from 'dotenv';
 
 // routes
 import index from './routes/index';
-
+dotenv.config();
+console.log(process.env);
+console.log(process.env.DB_HOST);
 const app = new Koa();
 
 // error handler

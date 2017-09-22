@@ -24,9 +24,10 @@ const StatusTypeLoggedOut = 0,
   StatusTypeAway = 1,
   StatusTypeAvailable = 2;
 
-const accountId = "706505873793485629";
-const apiSettings = "1645412287691666032";
-const apiKey = "4UQadjX14fasZR0f/VTKLGfM1VMV9oaOIcK5bLppG93o8ICp4Fx4p2G6lvY2ztqrwP9R7lenJ5MWyJIGCvHicg==";
+const accountId = process.env.ACCOUNT_ID;
+const apiSettings = process.env.API_SETTINGS;
+const apiKey = process.env.API_KEY;
+
 
 /**
  * getRequestURL is a utility function that formats the api URL to be used based on the request type and parameters
