@@ -2,16 +2,6 @@ import Router from 'koa-router';
 import CryptoJS from 'crypto-js';
 import http from 'https';
 
-
-/**
- *  Account ID: 706505873793485629
- * API Settings: 1645412287691666032
- * API Key: 4UQadjX14fasZR0f/VTKLGfM1VMV9oaOIcK5bLppG93o8ICp4Fx4p2G6lvY2ztqrwP9R7lenJ5MWyJIGCvHicg==
- * 
- * 
- * 
- */
-
 const router = new Router(); // require('koa-router')()
 
 const ServiceTypeChat = 1,
@@ -90,7 +80,6 @@ let getNumberOfDesktopViewers = () => {
         }, 0);
         resolve(number);
       });
-
     });
   });
 };
@@ -111,10 +100,8 @@ let getActiveChats = () => {
         let result = par.Data.length;
         resolve(result);
       });
-
     });
   });
-
 }
 
 
@@ -146,10 +133,8 @@ let getOperators = () => {
             chatService: d.StatusType == StatusTypeAvailable,
           }
         });
-
         resolve(result);
       });
-
     });
   });
 };
@@ -185,10 +170,8 @@ let setOperatorStatus = (operatorID, serviceTypeID, clientID, statusType) => {
         let par = JSON.parse(data);
         resolve(par.Status);
       });
-
     });
   });
-
 
 }
 
@@ -200,7 +183,6 @@ router.get('/', async(ctx) => {
   let mobileVisitors = await getNumberOfMobileViewers();
   let desktopVisitors = await getNumberOfDesktopViewers();
   await ctx.render('index', {
-    title: 'Hello Koa 2!',
     activeChats: activeChats,
     mobileVisitors: mobileVisitors,
     desktopVisitors: desktopVisitors,
